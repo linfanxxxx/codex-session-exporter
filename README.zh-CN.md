@@ -20,6 +20,18 @@
 
 ## 快速开始
 
+在线安装：
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/linfanxxxx/codex-session-exporter/main/scripts/install-from-github.sh | bash
+```
+
+在线安装并顺手安装 skill：
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/linfanxxxx/codex-session-exporter/main/scripts/install-from-github.sh | bash -s -- --with-skill
+```
+
 先安装本地 CLI 命令：
 
 ```bash
@@ -142,6 +154,8 @@ codex-session-exporter import bundle ./exports/session.codex-session --codex-hom
 ```
 
 这个 skill 会优先使用全局安装的 `codex-session-exporter` 命令；如果没有，就回退到安装时记录的仓库路径。
+
+如果你想直接在线安装，可以使用 `install-from-github.sh --with-skill`。它会先把仓库下载到本地安装目录，再自动执行 CLI 安装和 skill 安装。
 
 ## 兼容性说明
 

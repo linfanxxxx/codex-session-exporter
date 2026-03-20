@@ -36,6 +36,7 @@
     "export:bundle": "node ./bin/codex-session-exporter.mjs export bundle",
     "import:bundle": "node ./bin/codex-session-exporter.mjs import bundle",
     "install:cli": "./scripts/install-cli.sh",
+    "install:github": "./scripts/install-from-github.sh",
     "install:skill": "./scripts/install-skill.sh"
   }
 }
