@@ -266,7 +266,7 @@ function printExportResult(kind, outputPath, session) {
 }
 
 function printHelp() {
-  console.log(`Codex Session Portability
+  console.log(`Codex Session Exporter
 
 Usage:
   node src/cli.mjs list [--limit 20] [--query keyword] [--json]

@@ -1,15 +1,15 @@
 ---
-name: codex-session-portability
-description: Export, import, inspect, and share local Codex sessions as portable bundles, Markdown, or HTML. Use when a user wants to move a Codex session to another client, archive it for offline reading, or inspect local Codex session metadata.
+name: codex-session-exporter
+description: Export, import, inspect, and share local Codex sessions as bundles, Markdown, or HTML. Use when a user wants to move a Codex session to another client, archive it for offline reading, or inspect local Codex session metadata.
 ---
 
-# Codex Session Portability
+# Codex Session Exporter
 
 Use this skill when the user wants to inspect, export, import, or share local Codex sessions.
 
 ## Prefer The Runner Script
 
-Use [scripts/run-portability.sh](scripts/run-portability.sh) instead of rebuilding command lines by hand. It prefers a globally installed `codex-session-portability` command and falls back to the copy bundled in this repo.
+Use [scripts/run-exporter.sh](scripts/run-exporter.sh) instead of rebuilding command lines by hand. It prefers a globally installed `codex-session-exporter` command and falls back to the copy bundled in this repo. The legacy `codex-session-portability` command is still accepted as a compatibility alias.
 
 ## Workflow
 
@@ -27,12 +27,12 @@ Use [scripts/run-portability.sh](scripts/run-portability.sh) instead of rebuildi
 ## Common Commands
 
 ```bash
-scripts/run-portability.sh list --limit 10
-scripts/run-portability.sh inspect <session-id>
-scripts/run-portability.sh export md <session-id> --output ./exports/session.md
-scripts/run-portability.sh export html <session-id> --output ./exports/session.html
-scripts/run-portability.sh export bundle <session-id> --output ./exports/session.codex-session
-scripts/run-portability.sh import bundle ./exports/session.codex-session --target-cwd /new/workspace
+scripts/run-exporter.sh list --limit 10
+scripts/run-exporter.sh inspect <session-id>
+scripts/run-exporter.sh export md <session-id> --output ./exports/session.md
+scripts/run-exporter.sh export html <session-id> --output ./exports/session.html
+scripts/run-exporter.sh export bundle <session-id> --output ./exports/session.codex-session
+scripts/run-exporter.sh import bundle ./exports/session.codex-session --target-cwd /new/workspace
 ```
 
 ## Notes

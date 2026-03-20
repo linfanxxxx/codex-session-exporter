@@ -1,5 +1,5 @@
 {
-  "name": "codex-session-portability",
+  "name": "codex-session-exporter",
   "version": "0.1.0",
   "description": "Export, import, and share local Codex sessions as bundles, Markdown, and HTML.",
   "type": "module",
@@ -7,6 +7,7 @@
     "node": ">=18"
   },
   "bin": {
+    "codex-session-exporter": "./bin/codex-session-exporter.mjs",
     "codex-session-portability": "./bin/codex-session-portability.mjs"
   },
   "files": [
@@ -27,12 +28,12 @@
   ],
   "license": "MIT",
   "scripts": {
-    "list": "node ./bin/codex-session-portability.mjs list",
-    "inspect": "node ./bin/codex-session-portability.mjs inspect",
-    "export:md": "node ./bin/codex-session-portability.mjs export md",
-    "export:html": "node ./bin/codex-session-portability.mjs export html",
-    "export:bundle": "node ./bin/codex-session-portability.mjs export bundle",
-    "import:bundle": "node ./bin/codex-session-portability.mjs import bundle",
+    "list": "node ./bin/codex-session-exporter.mjs list",
+    "inspect": "node ./bin/codex-session-exporter.mjs inspect",
+    "export:md": "node ./bin/codex-session-exporter.mjs export md",
+    "export:html": "node ./bin/codex-session-exporter.mjs export html",
+    "export:bundle": "node ./bin/codex-session-exporter.mjs export bundle",
+    "import:bundle": "node ./bin/codex-session-exporter.mjs import bundle",
     "install:skill": "./scripts/install-skill.sh"
   }
 }

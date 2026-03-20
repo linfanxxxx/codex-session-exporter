@@ -1,6 +1,6 @@
-# Codex Session Portability
+# Codex Session Exporter
 
-`codex-session-portability` is a standalone CLI and repo-ready package for exporting local Codex sessions into:
+`codex-session-exporter` is a standalone CLI and repo-ready package for exporting local Codex sessions into:
 
 - readable Markdown
 - readable single-file HTML
@@ -29,10 +29,10 @@ It is designed around the storage shape observed in local Codex Desktop / CLI en
 ## Runtime
 
 - The actual CLI uses Node's built-in `node:sqlite` module and requires a discoverable `Node 22+` runtime.
-- The launcher at `bin/codex-session-portability.mjs` can start under `Node 18+`, search for Node 22 automatically, and then re-exec the CLI.
+- The launcher at `bin/codex-session-exporter.mjs` can start under `Node 18+`, search for Node 22 automatically, and then re-exec the CLI.
 - Automatic discovery checks:
   - the current `node`
-  - `CODEX_SESSION_PORTABILITY_NODE`
+  - `CODEX_SESSION_EXPORTER_NODE`
   - `NVM_BIN/node`
   - `PATH` entries for `node`, `node22`, and `nodejs`
   - `~/.nvm/versions/node/*/bin/node`
@@ -40,7 +40,7 @@ It is designed around the storage shape observed in local Codex Desktop / CLI en
 ## Repo Layout
 
 ```text
-codex-session-portability/
+codex-session-exporter/
   bin/
   scripts/
   skills/
@@ -61,75 +61,77 @@ Share the whole repository directory. The recipient can:
 Direct launcher usage:
 
 ```bash
-./bin/codex-session-portability.mjs list --limit 10
+./bin/codex-session-exporter.mjs list --limit 10
 ```
 
 If the executable bit is unavailable in the target environment:
 
 ```bash
-node ./bin/codex-session-portability.mjs list --limit 10
+node ./bin/codex-session-exporter.mjs list --limit 10
 ```
 
 Optional global link:
 
 ```bash
 npm link
-codex-session-portability list --limit 10
+codex-session-exporter list --limit 10
 ```
+
+The legacy command name `codex-session-portability` is still exposed as a compatibility alias.
 
 ## Usage
 
 List recent sessions:
 
 ```bash
-./bin/codex-session-portability.mjs list --limit 10
+./bin/codex-session-exporter.mjs list --limit 10
 ```
 
 Inspect one session:
 
 ```bash
-./bin/codex-session-portability.mjs inspect 019d0a15-0c56-7b61-86ed-5b1f41c263cf
+./bin/codex-session-exporter.mjs inspect 019d0a15-0c56-7b61-86ed-5b1f41c263cf
 ```
 
 Export Markdown:
 
 ```bash
-./bin/codex-session-portability.mjs export md 019d0a15-0c56-7b61-86ed-5b1f41c263cf --output ./exports/session.md
+./bin/codex-session-exporter.mjs export md 019d0a15-0c56-7b61-86ed-5b1f41c263cf --output ./exports/session.md
 ```
 
 Export HTML:
 
 ```bash
-./bin/codex-session-portability.mjs export html 019d0a15-0c56-7b61-86ed-5b1f41c263cf --output ./exports/session.html
+./bin/codex-session-exporter.mjs export html 019d0a15-0c56-7b61-86ed-5b1f41c263cf --output ./exports/session.html
 ```
 
 Export a portable bundle:
 
 ```bash
-./bin/codex-session-portability.mjs export bundle 019d0a15-0c56-7b61-86ed-5b1f41c263cf --output ./exports/session.codex-session
+./bin/codex-session-exporter.mjs export bundle 019d0a15-0c56-7b61-86ed-5b1f41c263cf --output ./exports/session.codex-session
 ```
 
 Import the bundle into another Codex home:
 
 ```bash
-./bin/codex-session-portability.mjs import bundle ./exports/session.codex-session --codex-home ~/.codex
+./bin/codex-session-exporter.mjs import bundle ./exports/session.codex-session --codex-home ~/.codex
 ```
 
 Import and rewrite the working directory:
 
 ```bash
-./bin/codex-session-portability.mjs import bundle ./exports/session.codex-session --codex-home ~/.codex --target-cwd /new/workspace
+./bin/codex-session-exporter.mjs import bundle ./exports/session.codex-session --codex-home ~/.codex --target-cwd /new/workspace
 ```
 
 Prefix-rewrite the working directory:
 
 ```bash
-./bin/codex-session-portability.mjs import bundle ./exports/session.codex-session --codex-home ~/.codex --cwd-map /old/root=/new/root
+./bin/codex-session-exporter.mjs import bundle ./exports/session.codex-session --codex-home ~/.codex --cwd-map /old/root=/new/root
 ```
 
 ## Skill Wrapper
 
-This repo also includes an optional skill at `skills/codex-session-portability`.
+This repo also includes an optional skill at `skills/codex-session-exporter`.
 
 Install it into the local Codex skills directory:
 
@@ -137,7 +139,7 @@ Install it into the local Codex skills directory:
 ./scripts/install-skill.sh
 ```
 
-The skill prefers a globally installed `codex-session-portability` command and otherwise uses the repo path recorded at install time. If you move or delete the repo later, either reinstall the skill from the new repo path or install the CLI globally with `npm link`.
+The skill prefers a globally installed `codex-session-exporter` command and otherwise uses the repo path recorded at install time. The legacy `codex-session-portability` command is still supported as a compatibility alias. If you move or delete the repo later, either reinstall the skill from the new repo path or install the CLI globally with `npm link`.
 
 ## Bundle Layout
 
