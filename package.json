@@ -21,13 +21,29 @@
   ],
   "keywords": [
     "codex",
+    "codex-cli",
     "session",
     "export",
     "import",
     "markdown",
-    "html"
+    "html",
+    "sqlite",
+    "cli-tool",
+    "session-export"
   ],
+  "author": "zhouyifan",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/linfanxxxx/codex-session-exporter.git"
+  },
+  "homepage": "https://github.com/linfanxxxx/codex-session-exporter#readme",
+  "bugs": {
+    "url": "https://github.com/linfanxxxx/codex-session-exporter/issues"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "list": "node ./bin/codex-session-exporter.mjs list",
     "inspect": "node ./bin/codex-session-exporter.mjs inspect",
@@ -37,6 +53,7 @@
     "import:bundle": "node ./bin/codex-session-exporter.mjs import bundle",
     "install:cli": "./scripts/install-cli.sh",
     "install:github": "./scripts/install-from-github.sh",
-    "install:skill": "./scripts/install-skill.sh"
+    "install:skill": "./scripts/install-skill.sh",
+    "install:skill:cli": "node ./bin/codex-session-exporter.mjs install skill"
   }
 }

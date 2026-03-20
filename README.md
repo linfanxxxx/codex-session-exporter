@@ -15,7 +15,7 @@ Export, inspect, and share local Codex sessions as Markdown, HTML, or portable b
 
 ## 中文快速开始
 
-在线安装：
+当前可直接使用的方式：在线安装：
 
 ```bash
 curl -fsSL https://raw.githubusercontent.com/linfanxxxx/codex-session-exporter/main/scripts/install-from-github.sh | bash
@@ -25,6 +25,13 @@ curl -fsSL https://raw.githubusercontent.com/linfanxxxx/codex-session-exporter/m
 
 ```bash
 curl -fsSL https://raw.githubusercontent.com/linfanxxxx/codex-session-exporter/main/scripts/install-from-github.sh | bash -s -- --with-skill
+```
+
+如果后续发布到 npm，也可以这样安装：
+
+```bash
+npm install -g codex-session-exporter
+codex-session-exporter install skill
 ```
 
 先安装本地 CLI 命令：
@@ -77,7 +84,7 @@ It is designed around the local storage shape used by current Codex Desktop / CL
 
 ## Quick Start
 
-Install directly from GitHub:
+Available now: install directly from GitHub:
 
 ```bash
 curl -fsSL https://raw.githubusercontent.com/linfanxxxx/codex-session-exporter/main/scripts/install-from-github.sh | bash
@@ -87,6 +94,13 @@ Install from GitHub and also install the bundled skill:
 
 ```bash
 curl -fsSL https://raw.githubusercontent.com/linfanxxxx/codex-session-exporter/main/scripts/install-from-github.sh | bash -s -- --with-skill
+```
+
+If you publish the package to npm later, you can also install it like this:
+
+```bash
+npm install -g codex-session-exporter
+codex-session-exporter install skill
 ```
 
 Install the local CLI command:
@@ -207,10 +221,16 @@ This repo also includes an optional Codex skill at `skills/codex-session-exporte
 Install it into the local Codex skills directory:
 
 ```bash
+codex-session-exporter install skill
+```
+
+If you are running from a local clone without installing the CLI into `PATH`, you can still use:
+
+```bash
 ./scripts/install-skill.sh
 ```
 
-The skill prefers a globally installed `codex-session-exporter` command and otherwise uses the repo path recorded at install time.
+The skill installer copies the bundled skill into `~/.codex/skills/codex-session-exporter` by default and records the installed package or repo path so Codex can invoke the CLI later.
 
 For direct online installation, `install-from-github.sh --with-skill` downloads the repo into a local install directory and then runs both the CLI installer and the skill installer.
 

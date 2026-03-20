@@ -20,7 +20,7 @@
 
 ## 快速开始
 
-在线安装：
+当前可直接使用的方式：在线安装：
 
 ```bash
 curl -fsSL https://raw.githubusercontent.com/linfanxxxx/codex-session-exporter/main/scripts/install-from-github.sh | bash
@@ -30,6 +30,13 @@ curl -fsSL https://raw.githubusercontent.com/linfanxxxx/codex-session-exporter/m
 
 ```bash
 curl -fsSL https://raw.githubusercontent.com/linfanxxxx/codex-session-exporter/main/scripts/install-from-github.sh | bash -s -- --with-skill
+```
+
+如果你后续把它发布到 npm，也可以这样安装：
+
+```bash
+npm install -g codex-session-exporter
+codex-session-exporter install skill
 ```
 
 先安装本地 CLI 命令：
@@ -150,10 +157,16 @@ codex-session-exporter import bundle ./exports/session.codex-session --codex-hom
 安装到本地 Codex skills 目录：
 
 ```bash
+codex-session-exporter install skill
+```
+
+如果你是在本地源码仓库里使用，还没有把 CLI 放进 `PATH`，也可以继续运行：
+
+```bash
 ./scripts/install-skill.sh
 ```
 
-这个 skill 会优先使用全局安装的 `codex-session-exporter` 命令；如果没有，就回退到安装时记录的仓库路径。
+这个安装命令默认会把 skill 复制到 `~/.codex/skills/codex-session-exporter`，并记录当前安装包或源码仓库路径，后续 Codex 就能直接调用它。
 
 如果你想直接在线安装，可以使用 `install-from-github.sh --with-skill`。它会先把仓库下载到本地安装目录，再自动执行 CLI 安装和 skill 安装。
 

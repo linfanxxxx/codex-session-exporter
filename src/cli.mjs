@@ -1,11 +1,13 @@
 #!/usr/bin/env node
 
+import { fileURLToPath } from "node:url";
+
 import { exportBundle, exportHtml, exportMarkdown, importBundle } from "./bundle.mjs";
 import { inspectSession, listSessions, resolveSession } from "./codex-store.mjs";
+import { installSkill } from "./install.mjs";
 import { formatDisplayDate } from "./utils.mjs";
 
-async function main() {
-  const args = process.argv.slice(2);
+export async function main(args = process.argv.slice(2)) {
 
   if (args.length === 0 || args.includes("--help") || args.includes("-h")) {
     printHelp();
@@ -26,6 +28,9 @@ async function main() {
       return;
     case "import":
       await runImport(args.slice(1));
+      return;
+    case "install":
+      await runInstall(args.slice(1));
       return;
     default:
       printHelp();
@@ -135,6 +140,22 @@ async function runImport(args) {
   console.log(`Rollout: ${result.targetRolloutPath}`);
   console.log(`CWD: ${result.targetCwd || "unchanged"}`);
   console.log(`Action: ${result.replacedExistingThread ? "updated existing thread" : "created new thread"}`);
+}
+
+async function runInstall(args) {
+  const subcommand = args[0];
+
+  if (subcommand !== "skill") {
+    throw new Error('install expects "skill".');
+  }
+
+  const options = parseOptions(args.slice(1));
+  const result = await installSkill({ codexHome: options.codexHome });
+
+  console.log(`Installed skill ${result.skillName}`);
+  console.log(`Codex home: ${result.codexHome}`);
+  console.log(`Skill: ${result.targetSkillDir}`);
+  console.log("Restart Codex to pick up the new skill.");
 }
 
 function parseOptions(args) {
@@ -269,13 +290,14 @@ function printHelp() {
   console.log(`Codex Session Exporter
 
 Usage:
-  node src/cli.mjs list [--limit 20] [--query keyword] [--json]
-  node src/cli.mjs inspect <session-id> [--codex-home ~/.codex]
-  node src/cli.mjs export md <session-id> [--output ./exports/session.md]
-  node src/cli.mjs export html <session-id> [--output ./exports/session.html]
-  node src/cli.mjs export bundle <session-id> [--output ./exports/session.codex-session]
-  node src/cli.mjs import bundle <bundle-path> [--codex-home ~/.codex] [--target-cwd /new/path]
-  node src/cli.mjs import bundle <bundle-path> [--cwd-map /old/root=/new/root]
+  codex-session-exporter list [--limit 20] [--query keyword] [--json]
+  codex-session-exporter inspect <session-id> [--codex-home ~/.codex]
+  codex-session-exporter export md <session-id> [--output ./exports/session.md]
+  codex-session-exporter export html <session-id> [--output ./exports/session.html]
+  codex-session-exporter export bundle <session-id> [--output ./exports/session.codex-session]
+  codex-session-exporter import bundle <bundle-path> [--codex-home ~/.codex] [--target-cwd /new/path]
+  codex-session-exporter import bundle <bundle-path> [--cwd-map /old/root=/new/root]
+  codex-session-exporter install skill [--codex-home ~/.codex]
 
 Options:
   -o, --output       Write exports to a specific path
@@ -289,7 +311,19 @@ Options:
 `);
 }
 
-main().catch((error) => {
-  console.error(error.message);
-  process.exitCode = 1;
-});
+if (isDirectExecution()) {
+  main().catch((error) => {
+    console.error(error.message);
+    process.exitCode = 1;
+  });
+}
+
+function isDirectExecution() {
+  const entryPath = process.argv[1];
+
+  if (!entryPath) {
+    return false;
+  }
+
+  return fileURLToPath(import.meta.url) === entryPath;
+}

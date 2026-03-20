@@ -14,7 +14,9 @@ const LAUNCHER_PATH = fileURLToPath(import.meta.url);
 const CLI_PATH = path.resolve(path.dirname(LAUNCHER_PATH), "../src/cli.mjs");
 
 if (CURRENT_NODE_MAJOR >= REQUIRED_NODE_MAJOR) {
-  await import(CLI_PATH);
+  const { main } = await import(CLI_PATH);
+  await main(process.argv.slice(2));
+  process.exit(process.exitCode ?? 0);
 }
 
 const candidate = findBestNodeCandidate();
