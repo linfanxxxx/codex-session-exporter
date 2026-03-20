@@ -2,7 +2,46 @@
 
 Export, inspect, and share local Codex sessions as Markdown, HTML, or portable bundles.
 
-[简体中文](./README.zh-CN.md)
+[简体中文完整文档](./README.zh-CN.md)
+
+## 中文简介
+
+`codex-session-exporter` 是一个用来导出、查看、迁移本地 Codex 会话的工具，支持：
+
+- 导出 Markdown 文档，方便离线阅读
+- 导出单文件 HTML，方便分享和归档
+- 导出 bundle，把会话迁移到另一个 Codex 客户端
+- 导入 bundle，恢复会话原始 JSONL 和线程元数据
+
+## 中文快速开始
+
+列出最近会话：
+
+```bash
+./bin/codex-session-exporter.mjs list --limit 10
+```
+
+导出 Markdown：
+
+```bash
+./bin/codex-session-exporter.mjs export md <session-id> --output ./exports/session.md
+```
+
+导出 HTML：
+
+```bash
+./bin/codex-session-exporter.mjs export html <session-id> --output ./exports/session.html
+```
+
+导出 bundle：
+
+```bash
+./bin/codex-session-exporter.mjs export bundle <session-id> --output ./exports/session.codex-session
+```
+
+完整中文说明见：[README.zh-CN.md](./README.zh-CN.md)
+
+## English
 
 `codex-session-exporter` is a standalone CLI for working with locally stored Codex sessions. It can:
 
