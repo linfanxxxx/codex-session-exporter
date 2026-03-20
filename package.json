@@ -1,0 +1,38 @@
+{
+  "name": "codex-session-portability",
+  "version": "0.1.0",
+  "description": "Export, import, and share local Codex sessions as bundles, Markdown, and HTML.",
+  "type": "module",
+  "engines": {
+    "node": ">=18"
+  },
+  "bin": {
+    "codex-session-portability": "./bin/codex-session-portability.mjs"
+  },
+  "files": [
+    "bin",
+    "src",
+    "scripts",
+    "skills",
+    "README.md",
+    "LICENSE"
+  ],
+  "keywords": [
+    "codex",
+    "session",
+    "export",
+    "import",
+    "markdown",
+    "html"
+  ],
+  "license": "MIT",
+  "scripts": {
+    "list": "node ./bin/codex-session-portability.mjs list",
+    "inspect": "node ./bin/codex-session-portability.mjs inspect",
+    "export:md": "node ./bin/codex-session-portability.mjs export md",
+    "export:html": "node ./bin/codex-session-portability.mjs export html",
+    "export:bundle": "node ./bin/codex-session-portability.mjs export bundle",
+    "import:bundle": "node ./bin/codex-session-portability.mjs import bundle",
+    "install:skill": "./scripts/install-skill.sh"
+  }
+}
