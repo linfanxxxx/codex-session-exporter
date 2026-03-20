@@ -15,28 +15,34 @@ Export, inspect, and share local Codex sessions as Markdown, HTML, or portable b
 
 ## 中文快速开始
 
+先安装本地 CLI 命令：
+
+```bash
+./scripts/install-cli.sh
+```
+
 列出最近会话：
 
 ```bash
-./bin/codex-session-exporter.mjs list --limit 10
+codex-session-exporter list --limit 10
 ```
 
 导出 Markdown：
 
 ```bash
-./bin/codex-session-exporter.mjs export md <session-id> --output ./exports/session.md
+codex-session-exporter export md <session-id> --output ./exports/session.md
 ```
 
 导出 HTML：
 
 ```bash
-./bin/codex-session-exporter.mjs export html <session-id> --output ./exports/session.html
+codex-session-exporter export html <session-id> --output ./exports/session.html
 ```
 
 导出 bundle：
 
 ```bash
-./bin/codex-session-exporter.mjs export bundle <session-id> --output ./exports/session.codex-session
+codex-session-exporter export bundle <session-id> --output ./exports/session.codex-session
 ```
 
 完整中文说明见：[README.zh-CN.md](./README.zh-CN.md)
@@ -59,34 +65,40 @@ It is designed around the local storage shape used by current Codex Desktop / CL
 
 ## Quick Start
 
-Run the launcher directly:
+Install the local CLI command:
 
 ```bash
-./bin/codex-session-exporter.mjs list --limit 10
+./scripts/install-cli.sh
+```
+
+List recent sessions:
+
+```bash
+codex-session-exporter list --limit 10
 ```
 
 Export one session to Markdown:
 
 ```bash
-./bin/codex-session-exporter.mjs export md <session-id> --output ./exports/session.md
+codex-session-exporter export md <session-id> --output ./exports/session.md
 ```
 
 Export one session to HTML:
 
 ```bash
-./bin/codex-session-exporter.mjs export html <session-id> --output ./exports/session.html
+codex-session-exporter export html <session-id> --output ./exports/session.html
 ```
 
 Export one session as a portable bundle:
 
 ```bash
-./bin/codex-session-exporter.mjs export bundle <session-id> --output ./exports/session.codex-session
+codex-session-exporter export bundle <session-id> --output ./exports/session.codex-session
 ```
 
 Import a bundle into another Codex home:
 
 ```bash
-./bin/codex-session-exporter.mjs import bundle ./exports/session.codex-session --codex-home ~/.codex
+codex-session-exporter import bundle ./exports/session.codex-session --codex-home ~/.codex
 ```
 
 ## Why This Exists
@@ -119,43 +131,49 @@ The launcher at `bin/codex-session-exporter.mjs` can search for `Node 22+` in:
 List recent sessions:
 
 ```bash
-./bin/codex-session-exporter.mjs list --limit 20
+codex-session-exporter list --limit 20
 ```
 
 Inspect one session:
 
 ```bash
-./bin/codex-session-exporter.mjs inspect 019d0a15-0c56-7b61-86ed-5b1f41c263cf
+codex-session-exporter inspect 019d0a15-0c56-7b61-86ed-5b1f41c263cf
 ```
 
 Export Markdown:
 
 ```bash
-./bin/codex-session-exporter.mjs export md 019d0a15-0c56-7b61-86ed-5b1f41c263cf --output ./exports/session.md
+codex-session-exporter export md 019d0a15-0c56-7b61-86ed-5b1f41c263cf --output ./exports/session.md
 ```
 
 Export HTML:
 
 ```bash
-./bin/codex-session-exporter.mjs export html 019d0a15-0c56-7b61-86ed-5b1f41c263cf --output ./exports/session.html
+codex-session-exporter export html 019d0a15-0c56-7b61-86ed-5b1f41c263cf --output ./exports/session.html
 ```
 
 Export a portable bundle:
 
 ```bash
-./bin/codex-session-exporter.mjs export bundle 019d0a15-0c56-7b61-86ed-5b1f41c263cf --output ./exports/session.codex-session
+codex-session-exporter export bundle 019d0a15-0c56-7b61-86ed-5b1f41c263cf --output ./exports/session.codex-session
 ```
 
 Import and rewrite the working directory:
 
 ```bash
-./bin/codex-session-exporter.mjs import bundle ./exports/session.codex-session --codex-home ~/.codex --target-cwd /new/workspace
+codex-session-exporter import bundle ./exports/session.codex-session --codex-home ~/.codex --target-cwd /new/workspace
 ```
 
 Import and rewrite a shared root prefix:
 
 ```bash
-./bin/codex-session-exporter.mjs import bundle ./exports/session.codex-session --codex-home ~/.codex --cwd-map /old/root=/new/root
+codex-session-exporter import bundle ./exports/session.codex-session --codex-home ~/.codex --cwd-map /old/root=/new/root
+```
+
+If you do not want to install the CLI into `PATH`, you can still run the repo-local launcher directly:
+
+```bash
+./bin/codex-session-exporter.mjs list --limit 10
 ```
 
 ## Skill Wrapper

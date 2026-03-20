@@ -35,6 +35,7 @@
     "export:html": "node ./bin/codex-session-exporter.mjs export html",
     "export:bundle": "node ./bin/codex-session-exporter.mjs export bundle",
     "import:bundle": "node ./bin/codex-session-exporter.mjs import bundle",
+    "install:cli": "./scripts/install-cli.sh",
     "install:skill": "./scripts/install-skill.sh"
   }
 }
