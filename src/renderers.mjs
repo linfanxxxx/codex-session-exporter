@@ -1,4 +1,5 @@
 import { escapeHtml, formatDisplayDate } from "./utils.mjs";
+import { countTurns } from "./transcript.mjs";
 
 export function renderMarkdown(session) {
   const lines = [
